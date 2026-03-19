@@ -1,5 +1,5 @@
 # AboutMe
-# Mak's Personal Website
+# Jordan's Personal Website
 
 A modern, responsive personal website for a data analyst featuring a clean design with Green, Gold, Black, and White color scheme.
 
