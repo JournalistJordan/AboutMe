@@ -586,97 +586,6 @@ class EnhancedProjectInteractions {
     }
 }
 
-// Testimonial Carousel
-class TestimonialCarousel {
-    constructor() {
-        this.testimonials = document.querySelectorAll('.testimonial-card');
-        this.currentIndex = 0;
-        this.autoPlayInterval = null;
-        this.init();
-    }
-
-    init() {
-        if (this.testimonials.length > 0) {
-            this.startAutoPlay();
-            this.addNavigation();
-        }
-    }
-
-    startAutoPlay() {
-        this.autoPlayInterval = setInterval(() => {
-            this.nextTestimonial();
-        }, 5000);
-    }
-
-    stopAutoPlay() {
-        if (this.autoPlayInterval) {
-            clearInterval(this.autoPlayInterval);
-        }
-    }
-
-    nextTestimonial() {
-        this.testimonials[this.currentIndex].style.opacity = '0';
-        this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
-        setTimeout(() => {
-            this.testimonials[this.currentIndex].style.opacity = '1';
-        }, 300);
-    }
-
-    addNavigation() {
-        // Add navigation dots
-        const dotsContainer = document.createElement('div');
-        dotsContainer.className = 'testimonial-dots';
-        dotsContainer.style.cssText = `
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        `;
-
-        this.testimonials.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'testimonial-dot';
-            dot.style.cssText = `
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                border: 2px solid var(--accent-gold);
-                background: transparent;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            `;
-            
-            if (index === 0) {
-                dot.style.background = 'var(--accent-gold)';
-            }
-            
-            dot.addEventListener('click', () => this.goToTestimonial(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        const testimonialsSection = document.querySelector('.testimonials-grid');
-        if (testimonialsSection) {
-            testimonialsSection.appendChild(dotsContainer);
-        }
-    }
-
-    goToTestimonial(index) {
-        this.testimonials[this.currentIndex].style.opacity = '0';
-        this.currentIndex = index;
-        setTimeout(() => {
-            this.testimonials[this.currentIndex].style.opacity = '1';
-        }, 300);
-        this.updateDots();
-    }
-
-    updateDots() {
-        const dots = document.querySelectorAll('.testimonial-dot');
-        dots.forEach((dot, index) => {
-            dot.style.background = index === this.currentIndex ? 'var(--accent-gold)' : 'transparent';
-        });
-    }
-}
-
 // Resume Download Tracking
 class ResumeTracker {
     constructor() {
@@ -752,7 +661,7 @@ class EnhancedScrollAnimations {
         );
 
         const animatedElements = document.querySelectorAll(
-            '.hero-content, .section-title, .about-content, .project-card, .blog-card, .contact-content, .skill-category, .testimonial-card, .resume-card, .achievement-item, .timeline-item'
+            '.hero-content, .section-title, .about-content, .project-card, .blog-card, .contact-content, .skill-category, .resume-card, .achievement-item, .timeline-item'
         );
 
         animatedElements.forEach(el => {
@@ -824,7 +733,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new SkillsAnimation();
     new StatsCounter();
     new EnhancedProjectInteractions();
-    new TestimonialCarousel();
     new ResumeTracker();
 });
 
