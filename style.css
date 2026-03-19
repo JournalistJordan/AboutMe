@@ -571,106 +571,6 @@ h1, h2, h3, h4, h5, h6 {
     60% { transform: translateX(-50%) translateY(-5px); }
 }
 
-/* Testimonials Section */
-.testimonials {
-    padding: var(--section-padding);
-    background: var(--bg-secondary);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.testimonial-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    border: 1px solid var(--border-color);
-    transition: all var(--transition-fast);
-    position: relative;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px var(--hover-shadow);
-}
-
-.testimonial-card::before {
-    content: '"';
-    position: absolute;
-    top: 1rem;
-    left: 1.5rem;
-    font-size: 3rem;
-    color: var(--accent-gold);
-    opacity: 0.3;
-    font-family: Georgia, serif;
-}
-
-.testimonial-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.client-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent-gold);
-}
-
-.client-info h4 {
-    color: var(--primary-green);
-    margin-bottom: 0.25rem;
-    font-size: 1.1rem;
-}
-
-.client-title {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.rating {
-    display: flex;
-    gap: 0.25rem;
-}
-
-.rating i {
-    color: var(--accent-gold);
-    font-size: 0.9rem;
-}
-
-.testimonial-content {
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-style: italic;
-}
-
-.testimonial-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-}
-
-.project-type {
-    background: var(--light-gold);
-    color: var(--primary-green);
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-weight: 600;
-}
-
-.testimonial-date {
-    color: var(--text-secondary);
-}
-
 /* Enhanced About Section */
 .about-content {
     display: grid;
@@ -1673,20 +1573,6 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .testimonial-card {
-        padding: 1.5rem;
-    }
-    
-    .testimonial-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
-    }
-    
     .resume-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1832,7 +1718,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .skill-percentage {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
     
     .certifications {
