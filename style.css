@@ -16,6 +16,7 @@
     --success-green: #28a745;
     --warning-orange: #fd7e14;
     --info-blue: #17a2b8;
+    --error-red: #dc3545;
     --card-shadow: rgba(0, 0, 0, 0.1);
     --hover-shadow: rgba(0, 0, 0, 0.15);
     
@@ -58,6 +59,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Keyboard focus indicator — gold outline on all interactive elements */
+:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Suppress focus ring for mouse users on elements that handle their own focus styles */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
 }
 
 html {
@@ -115,6 +129,12 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     transition: all var(--transition-fast);
+}
+
+.navbar.scrolled {
+    background: var(--nav-bg);
+    box-shadow: 0 2px 20px var(--card-shadow);
+    opacity: 0.97;
 }
 
 .nav-container {
@@ -193,6 +213,10 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    gap: 5px;
 }
 
 .hamburger span {
@@ -465,6 +489,11 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
     border: 3px solid var(--accent-gold);
     transition: all var(--transition-fast);
+    /* Green background + initials visible while photo loads or if absent */
+    background: var(--primary-green);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent-gold);
 }
 
 .image-overlay {
@@ -799,6 +828,73 @@ h1, h2, h3, h4, h5, h6 {
 .cert-item span {
     color: var(--text-primary);
     font-weight: 600;
+}
+
+.cert-year {
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-left: 0.25rem;
+}
+
+.cert-badge {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: var(--pure-black);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Tools Section */
+.tools-section {
+    margin-top: 1.5rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.tools-section h3 {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tool-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.tool-badge i {
+    color: var(--accent-gold);
+    font-size: 1rem;
+}
+
+.tool-badge:hover {
+    border-color: var(--accent-gold);
+    background: var(--light-gold);
+    transform: translateY(-2px);
 }
 
 /* Resume Section */
@@ -1447,6 +1543,33 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 120px;
 }
 
+/* Form error state — only shown after user has interacted */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--error-red);
+}
+
+/* Form feedback messages */
+.form-message {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-message--success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message--error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* Footer */
 .footer {
     background: var(--dark-gray);
@@ -1739,38 +1862,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .cert-item span {
         font-size: 0.9rem;
-    }
-    
-    .testimonial-card {
-        padding: 1rem;
-    }
-    
-    .testimonial-card::before {
-        font-size: 2rem;
-        top: 0.5rem;
-        left: 1rem;
-    }
-    
-    .client-avatar {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .client-info h4 {
-        font-size: 1rem;
-    }
-    
-    .client-title {
-        font-size: 0.8rem;
-    }
-    
-    .testimonial-content {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-    
-    .testimonial-meta {
-        font-size: 0.75rem;
     }
     
     .resume-info h3 {
