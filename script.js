@@ -53,13 +53,15 @@ class MobileNavigation {
     }
 
     toggleMenu() {
-        this.hamburger.classList.toggle('active');
+        const isOpen = this.hamburger.classList.toggle('active');
         this.navMenu.classList.toggle('active');
+        this.hamburger.setAttribute('aria-expanded', isOpen);
     }
 
     closeMenu() {
         this.hamburger.classList.remove('active');
         this.navMenu.classList.remove('active');
+        this.hamburger.setAttribute('aria-expanded', 'false');
     }
 }
 
@@ -113,47 +115,6 @@ class NavigationManager {
     }
 }
 
-// Scroll Animations
-class ScrollAnimations {
-    constructor() {
-        this.observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        this.init();
-    }
-
-    init() {
-        // Create intersection observer
-        this.observer = new IntersectionObserver(
-            (entries) => this.handleIntersection(entries),
-            this.observerOptions
-        );
-
-        // Observe elements for animation
-        const animatedElements = document.querySelectorAll(
-            '.hero-content, .section-title, .about-content, .project-card, .blog-card, .contact-content, .skill-category'
-        );
-
-        animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            this.observer.observe(el);
-        });
-    }
-
-    handleIntersection(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                this.observer.unobserve(entry.target);
-            }
-        });
-    }
-}
-
 // Navbar Background on Scroll
 class NavbarManager {
     constructor() {
@@ -166,13 +127,7 @@ class NavbarManager {
     }
 
     updateNavbar() {
-        if (window.scrollY > 50) {
-            this.navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            this.navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            this.navbar.style.background = 'var(--nav-bg)';
-            this.navbar.style.boxShadow = 'none';
-        }
+        this.navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
 }
 
@@ -205,17 +160,30 @@ class ContactForm {
 
         // Show loading state
         const submitBtn = this.form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
+        const originalHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
 
-        // Simulate form submission (replace with actual API call)
-        setTimeout(() => {
-            this.showSuccessMessage();
-            this.form.reset();
-            submitBtn.textContent = originalText;
+        fetch(this.form.action, {
+            method: 'POST',
+            body: new FormData(this.form),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if (res.ok) {
+                this.showSuccessMessage();
+                this.form.reset();
+            } else {
+                this.showErrorMessage('Submission failed. Please email jordy3338@gmail.com directly.');
+            }
+        })
+        .catch(() => {
+            this.showErrorMessage('Network error. Please check your connection and try again.');
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalHTML;
             submitBtn.disabled = false;
-        }, 2000);
+        });
     }
 
     validateForm(data) {
@@ -263,23 +231,10 @@ class ContactForm {
             existingMessage.remove();
         }
 
-        // Create message element
+        // Create message element (styled via CSS classes in style.css)
         const messageEl = document.createElement('div');
         messageEl.className = `form-message form-message--${type}`;
         messageEl.textContent = message;
-        
-        // Style the message
-        messageEl.style.cssText = `
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-align: center;
-            ${type === 'success' 
-                ? 'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;'
-                : 'background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'
-            }
-        `;
 
         // Add message to form
         this.form.appendChild(messageEl);
@@ -357,32 +312,6 @@ class ParallaxEffect {
         if (this.hero) {
             this.hero.style.transform = `translateY(${rate}px)`;
         }
-    }
-}
-
-// Project Card Interactions
-class ProjectInteractions {
-    constructor() {
-        this.projectCards = document.querySelectorAll('.project-card');
-        this.init();
-    }
-
-    init() {
-        this.projectCards.forEach(card => {
-            card.addEventListener('mouseenter', () => this.handleMouseEnter(card));
-            card.addEventListener('mouseleave', () => this.handleMouseLeave(card));
-        });
-    }
-
-    handleMouseEnter(card) {
-        const image = card.querySelector('.project-image');
-        image.style.transform = 'scale(1.1)';
-        image.style.transition = 'transform 0.3s ease';
-    }
-
-    handleMouseLeave(card) {
-        const image = card.querySelector('.project-image');
-        image.style.transform = 'scale(1)';
     }
 }
 
@@ -734,6 +663,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new StatsCounter();
     new EnhancedProjectInteractions();
     new ResumeTracker();
+
+    // Dynamic footer year
+    const footerYear = document.getElementById('footer-year');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
 });
 
 // Add loading animation
