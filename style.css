@@ -574,6 +574,18 @@ h1, h2, h3, h4, h5, h6 {
     animation-delay: 2s;
 }
 
+.floating-card.card-4 {
+    top: 30%;
+    right: -15px;
+    animation-delay: 3s;
+}
+
+.floating-card.card-5 {
+    bottom: 30%;
+    left: -15px;
+    animation-delay: 4s;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
