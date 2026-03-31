@@ -6,20 +6,26 @@ This is a **static personal portfolio website** for Jordan Foltz, a data analyst
 
 **Live sections**: Home (hero), About, Projects, Resume, Blog, Contact
 
+**Additional pages**: `brand.html` — Personal Brand (Mission, Vision, Values)
+
 ---
 
 ## Repository Structure
 
 ```
 AboutMe/
-├── index.html                                    # Single HTML file — entire page structure
-├── style.css                                     # All styles, theming, and responsive CSS
+├── index.html                                    # Main portfolio — entire single-page structure
+├── brand.html                                    # Personal brand page (Mission, Vision, Values)
+├── style.css                                     # All styles, theming, and responsive CSS (shared)
+├── brand.css                                     # Brand-page-specific layout styles
 ├── script.js                                     # All JavaScript interactivity (ES6 classes)
 ├── README.md                                     # User-facing project documentation
 ├── CLAUDE.md                                     # This file
+├── Headshot Professional Resized.jpg             # Profile photo
 ├── Jordan Foltz Data Analyst Resume.docx         # Resume (downloadable asset)
-├── Facebook_Engagemnt_Algorithm_AB_Test_Case_Study.pdf   # Case study asset
-└── Mobile_Site_Survey_AB_Testing_Case_Study.pdf  # Case study asset
+├── Facebook_Engagemnt_Algorithm_AB_Test_Case_Study.pdf   # Case study asset (note "Engagemnt" typo in filename)
+├── Mobile_Site_Survey_AB_Testing_Case_Study.pdf  # Case study asset
+└── Referral_Campaign_Jordan_Foltz.pdf            # Case study asset
 ```
 
 **There is no `package.json`, no build step, no node_modules.** The site runs by opening `index.html` directly in a browser or serving the directory with any static file server.
@@ -119,7 +125,21 @@ Copy an existing `.project-card` div in the `#projects` section of `index.html`.
 The JS `ThemeManager` class toggles `data-theme="dark"` on `document.documentElement`. CSS handles the rest via variable overrides in `[data-theme="dark"]`. Do not add inline style dark-mode overrides in JS — keep it in CSS variables.
 
 ### Contact Form
-The form currently **simulates** submission (2-second timeout then success message). To wire up a real backend, replace the `setTimeout` in `ContactForm.handleSubmit()` with a `fetch()` call to your API/email service.
+The form uses Formspree (`action="https://formspree.io/f/mgopvvvd"`). `ContactForm.handleSubmit()` submits via `fetch()` with `Accept: application/json`. The class has a null guard (`if (!this.form) return`) so pages without `#contact-form` don't error.
+
+### Cross-Page Navigation — CRITICAL
+`NavigationManager` in `script.js` intercepts **all** `.nav-link` clicks with `e.preventDefault()` and tries to scroll within the current page. This breaks cross-page links like `href="index.html#projects"`.
+
+**Nav link class conventions:**
+- `.nav-link` — use on `index.html` only, for in-page anchor scrolling (intercepted by JS)
+- `.nav-link-ext` — use on other pages (e.g., `brand.html`) for links back to `index.html#section` (looks identical to `.nav-link`, NOT intercepted by JS)
+- `.nav-link-brand` — use for the "My Brand" pill button in all navbars
+
+### Adding a New Page
+1. Create the `.html` file loading both `style.css` (shared variables/navbar/theme) and a page-specific `.css` file
+2. Use `.nav-link-ext` for all navbar section links (never `.nav-link`)
+3. Load `script.js` — `ThemeManager`, `NavbarManager`, and `MobileNavigation` work on all pages; other classes are no-ops if their elements don't exist
+4. Add a `#footer-year` span in the footer (auto-populated by `script.js`)
 
 ---
 

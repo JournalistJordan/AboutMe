@@ -139,6 +139,7 @@ class ContactForm {
     }
 
     init() {
+        if (!this.form) return;
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     }
 
