@@ -558,13 +558,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .floating-card.card-1 {
     top: 10%;
-    right: -20px;
+    left: -20px;
     animation-delay: 0s;
 }
 
 .floating-card.card-2 {
     top: 50%;
-    left: -20px;
+    right: -20px;
     animation-delay: 1s;
 }
 
@@ -576,13 +576,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .floating-card.card-4 {
     top: 30%;
-    right: -15px;
+    left: -15px;
     animation-delay: 3s;
 }
 
 .floating-card.card-5 {
     bottom: 30%;
-    left: -15px;
+    right: -15px;
     animation-delay: 4s;
 }
 

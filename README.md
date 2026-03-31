@@ -1,50 +1,56 @@
-# AboutMe
-# Jordan's Personal Website
+# Jordan Foltz - Personal Website
 
-A modern, responsive personal website for a data analyst featuring a clean design with Green, Gold, Black, and White color scheme.
+Welcome to my corner of the internet! 🎯
 
-## Features
+I'm a data analyst who loves turning complex data into clear, actionable insights that drive real business decisions. This website showcases my journey, projects, and passion for all things data.
 
-- **Responsive Design**: Fully responsive across all devices
-- **Dark/Light Mode**: Toggle between themes with persistent storage
-- **Smooth Animations**: Scroll-triggered animations and hover effects
-- **Interactive Elements**: 
-  - Typing animation in hero section
-  - Parallax effects
-  - Hover animations on cards and buttons
-- **Contact Form**: Functional contact form with validation
-- **Modern UI**: Clean, professional design with intuitive navigation
+## 🚀 What You'll Find Here
 
-## Sections
+### **About Me**
+My story, background, and what makes me tick as a data professional. From entrepreneurship to analytics, I bring a unique perspective to every project.
 
-1. **Home**: Hero section with professional photo placeholder and call-to-action buttons
-2. **About**: Background, skills, and experience showcase
-3. **Projects**: Featured data analysis projects with GitHub/demo links
-4. **Blog**: Latest articles about data trends and tutorials
-5. **Contact**: Contact form and social media links
+### **Featured Projects** 
+Real-world examples of my work, including:
+- **Case Studies**: A/B testing and statistical analysis projects
+- **Video Presentations**: Tableau dashboards and data visualizations
+- **Technical Projects**: Machine learning and automation solutions
 
-## Technologies Used
+### **Professional Badges & Certifications**
+- **Business Analytics Science Certificate** 
+- **Prompt Engineering Microcourse**
+- **CompTIA Data+ Certified**
+- Verify all credentials on my [Credly profile](https://www.credly.com/users/jordan-foltz)
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with CSS Grid, Flexbox, and custom properties
-- **JavaScript**: Interactive functionality and animations
-- **Font Awesome**: Icons
-- **Google Fonts**: Montserrat and Open Sans typography
+## 🎨 Website Features
 
-## File Structure
+- **Clean, Modern Design**: Built with a professional green, gold, and black color scheme
+- **Responsive Layout**: Looks great on any device
+- **Dark/Light Mode**: Toggle between themes for comfortable viewing
+- **Interactive Elements**: Smooth animations and transitions
+- **Project Filtering**: Easily browse by category (Dashboards, Analytics, Case Studies, etc.)
 
-```
-personal-website/
-├── index.html          # Main HTML file
-├── style.css           # All CSS styles and responsive design
-├── script.js           # JavaScript functionality
-└── README.md           # Project documentation
-```
+## 🛠️ Tech Stack
 
-## Getting Started
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Styling**: Custom CSS with animations and responsive design
+- **Icons**: Font Awesome
+- **Fonts**: Google Fonts (Montserrat & Open Sans)
 
-1. **Clone or download** the project files
-2. **Open `index.html`** in your web browser
+## 📧 Let's Connect!
+
+I'm always excited to connect with fellow data enthusiasts, potential employers, or anyone interested in collaboration.
+
+- **LinkedIn**: [linkedin.com/in/jordan-foltz](https://linkedin.com/in/jordan-foltz)
+- **GitHub**: [github.com/JournalistJordan](https://github.com/JournalistJordan)
+- **Credly**: [credly.com/users/jordan-foltz](https://www.credly.com/users/jordan-foltz)
+
+## 🌐 Check It Out
+
+**Live Site**: [https://journalistjordan.github.io/AboutMe/](https://journalistjordan.github.io/AboutMe/)
+
+---
+
+*Built with passion for data and dedication to clear communication. Let's turn your data into insights! 📊✨*
 3. **For development**: Use a local server like Live Server in VS Code
 
 ## Customization
