@@ -193,6 +193,53 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* Used on brand.html for regular nav links — same style as .nav-link but not
+   intercepted by NavigationManager's querySelectorAll('.nav-link') */
+.nav-link-ext {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.nav-link-ext:hover {
+    color: var(--accent-gold);
+}
+
+.nav-link-ext::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width var(--transition-fast);
+}
+
+.nav-link-ext:hover::after {
+    width: 100%;
+}
+
+.nav-link-brand {
+    color: var(--primary-green);
+    border: 1px solid var(--primary-green);
+    border-radius: var(--border-radius);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.nav-link-brand:hover {
+    background: var(--primary-green);
+    color: var(--pure-white);
+}
+
 .theme-toggle {
     background: none;
     border: 2px solid var(--primary-green);
