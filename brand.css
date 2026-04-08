@@ -94,6 +94,7 @@
     font-size: 1.15rem;
     margin-bottom: 1.25rem;
     font-family: var(--font-secondary);
+    color: #000000;
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.6s;
@@ -152,6 +153,43 @@
 }
 
 /* ---- Mission ---- */
+.mission-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-content p {
+    font-size: 1.2rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+    font-family: var(--font-secondary);
+    font-style: italic;
+    position: relative;
+    padding-top: 1rem;
+}
+
+.mission-content p::before {
+    content: '\201C';
+    display: block;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--accent-gold);
+    opacity: 0.45;
+    font-family: Georgia, serif;
+    margin-bottom: -0.5rem;
+}
+
+.mission-content p::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gold);
+    margin: 1.25rem auto 0;
+    border-radius: 2px;
+}
+
 .mission-quote {
     max-width: 720px;
     margin: 0 auto;
@@ -218,7 +256,7 @@
 /* ---- Values ---- */
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 0.5rem;
 }
