@@ -273,7 +273,8 @@ class TypingAnimation {
         const currentText = this.texts[this.currentTextIndex];
         
         if (this.isDeleting) {
-            this.element.textContent = currentText.substring(0, this.currentCharIndex - 1);
+            const remaining = currentText.substring(0, this.currentCharIndex - 1);
+            this.element.textContent = remaining || ' ';
             this.currentCharIndex--;
         } else {
             this.element.textContent = currentText.substring(0, this.currentCharIndex + 1);
