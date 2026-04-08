@@ -353,6 +353,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-green);
     margin-bottom: 1.5rem;
     font-weight: 400;
+    min-height: 2rem;
 }
 
 .hero-description {
@@ -1167,6 +1168,40 @@ h1, h2, h3, h4, h5, h6 {
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px var(--hover-shadow);
+}
+
+/* Work-in-progress project cards */
+.project-wip:hover {
+    transform: none;
+}
+
+.wip-wrapper {
+    position: relative;
+}
+
+.wip-blur {
+    filter: blur(4px);
+    user-select: none;
+    pointer-events: none;
+}
+
+.wip-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--accent-gold);
+    color: #1a1a1a;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 
 .project-card.hidden {
