@@ -253,7 +253,7 @@ class TypingAnimation {
         this.element = document.querySelector('.hero-subtitle');
         this.texts = [
             'Data Analyst & Insights Specialist',
-            'Python & R Programming Expert',
+            'Python Programming Associate',
             'Data Visualization Specialist',
             'Machine Learning Enthusiast'
         ];
